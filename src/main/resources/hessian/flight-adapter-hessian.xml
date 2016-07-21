@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--调用生产TFI的配置-->
+
+	<!--商旅统一配送地址-->
+    <bean id="deliveryAddress" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="http://ro.mangocity.com/TFIS/deliveryAddress"/>
+        <property name="serviceInterface" value="com.mangocity.tmc.flight.adapter.btms.DeliveryAddressAdapter"/>
+    </bean>
+    
+    <!--驻站地址查询-->
+   <bean id="satationAddressAdapter" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+   		<property name="serviceUrl" value="http://ro.mangocity.com/TFI1/satationAddress"/>
+        <property name="serviceInterface" value="com.mangocity.tmc.flight.adapter.btms.SatationAddressAdapter"/>
+   </bean>
+    
+    <!-- 消息服务配置 -->
+    <bean id="organizationConfigAdapter" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="http://ro.mangocity.com/TFIS/organizationConfig"/>
+        <property name="serviceInterface" value="com.mangocity.tmc.flight.adapter.btms.OrganizationConfigAdapter"/>
+    </bean>
+   
+</beans>
